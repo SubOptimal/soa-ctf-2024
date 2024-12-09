@@ -175,7 +175,7 @@ There are the following additional assumptions made:
 
 For the password checking, I wrote two scripts.
 
-* link:resources/zippy-solution.py[zippy-solution.py] which generated the permutations and write it in chunks to a file
+* link:resources/zippy-solution.py[zippy-solution.py] which generates the permutations and writes them in chunks to a file
 * link:resources/run-jtr.sh[run-jtr.sh] which runs JtR for each generated chunk
 
 The first iteration was to generate passwords as permutation of two words.
@@ -279,14 +279,14 @@ To solve the challenge, we need to know some basics of the tar archive format.
 Simplified, it can be summarized as follows:
 
 * a tar archive consists of a series of file entries
-* each entry consists of a header, and the content
-* header and content are stored in blocks of 512 bytes
+* each entry consists of a header and the file content
+* header and file content are stored in blocks of 512 bytes
 
-If the file content is not a multiple of 512 bytes, the last block contain bytes which don't belong to the file content (that is the mentioned slack space).
+If the file content is not a multiple of 512 bytes, the last block contains bytes which don't belong to the file content (that is the mentioned slack space).
 
-As the appended file is stored in the slack space we can compute its offset as "length_header + length_content_file".
+As the appended file is stored in the slack space we can compute its offset as "length_header + length_file_content".
 
-The content file length can be retrieved as:
+The file content length can be retrieved as:
 
 [source=shell]
 ----
@@ -299,7 +299,7 @@ So we have the following values:
 * the length of the header: 512 bytes (it is always one block)
 * the length of content file: 128623 bytes
 
-The slack space offset can be computed as: `512 + 128623 = 129135`.
+The offset of the slack space (zero-based) can be computed as: `512 + 128623 = 129135`.
 
 Now we can extract the bytes starting from offset `129135` into a new file.
 
