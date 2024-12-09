@@ -175,8 +175,8 @@ There are the following additional assumptions made:
 
 For the password checking, I wrote two scripts.
 
-* `zippy-solution.py` which generated the permutations and write it in chunks to a file
-* `run-jtr.sh` which runs JtR for each generated chunk
+* link:resources/zippy-solution.py[zippy-solution.py] which generated the permutations and write it in chunks to a file
+* link:resources/run-jtr.sh[run-jtr.sh] which runs JtR for each generated chunk
 
 The first iteration was to generate passwords as permutation of two words.
 
