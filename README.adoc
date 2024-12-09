@@ -277,6 +277,7 @@ The challenge mentions that a file is appended "in the 'slack space' part" of th
 To solve the challenge, we need to know some basics of the tar archive format.
 
 Simplified, it can be summarized as follows:
+
 * a tar archive consists of a series of file entries
 * each entry consists of a header, and the content
 * header and content are stored in blocks of 512 bytes
@@ -294,6 +295,7 @@ $ tar --verbose --list --file tapesplice.tar
 ----
 
 So we have the following values:
+
 * the length of the header: 512 bytes (it is always one block)
 * the length of content file: 128623 bytes
 
